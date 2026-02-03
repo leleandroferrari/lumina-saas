@@ -1,0 +1,29 @@
+{
+    "version": 2,
+    "rewrites": [
+        {
+            "source": "/dashboard/:path*",
+            "destination": "/api/dashboard/:path*"
+        }
+    ],
+    "builds": [
+        {
+            "src": "dashboard/package.json",
+            "use": "@vercel/next"
+        },
+        {
+            "src": "landing/package.json",
+            "use": "@vercel/vite"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/dashboard(.*)",
+            "dest": "/dashboard/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/landing/$1"
+        }
+    ]
+}
